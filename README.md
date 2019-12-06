@@ -1,8 +1,9 @@
-# Software Testing MOOC
+# Code examples
 
 This repository contains the code examples and exercises of
-TU Delft's edX MOOC on Software Testing.
+our *Software Testing: From Theory to Practice* book.
+
 
 ## License
 
-This repository is licensed under CC BY-NC-SA.
+Check the license of the book. The same one applies here.
