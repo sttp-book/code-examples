@@ -6,9 +6,9 @@ import java.util.List;
 
 public class InvoiceDao {
 
-    private static Connection c;
+    private static Connection c = null;
 
-    public void InvoiceDao() {
+    public InvoiceDao() {
         try {
             if(c!=null) return;
 
