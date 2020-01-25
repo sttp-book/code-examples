@@ -1,17 +1,15 @@
 package tudelft.roman;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RomanNumeralTestWithBeforeEach {
-
-    private RomanNumeral roman;
-
-    @BeforeEach
-    public void initialize() {
-        this.roman = new RomanNumeral();
-    }
+/*
+  JUnit creates a new instance of the class before each test,
+  so test setup can be assigned as instance fields.
+  This has the advantage that references can be made final
+ */
+    final private RomanNumeral roman = new RomanNumeral();
 
     @Test
     public void singleNumber() {
