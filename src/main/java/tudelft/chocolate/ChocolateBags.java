@@ -2,13 +2,15 @@ package tudelft.chocolate;
 
 public class ChocolateBags {
 
+    public static final int CANNOT_PACK_BAG = -1;
+
     public int calculate(int small, int big, int total) {
         int maxBigBoxes = total / 5;
-        int bigBoxesWeCanUse = maxBigBoxes < big ? maxBigBoxes : big;
+        int bigBoxesWeCanUse = Math.min(maxBigBoxes, big);
         total -= (bigBoxesWeCanUse * 5);
 
         if(small < total)
-            return -1;
+            return CANNOT_PACK_BAG;
         return total;
 
     }
