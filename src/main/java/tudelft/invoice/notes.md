@@ -7,3 +7,4 @@
 - streaming in filter
 - test example just below threshold
 - Use domain terminology, rather than pattern name (`InvoiceDAO` -> `IssuedInvoices`) 
+- more compact assertion using matchers

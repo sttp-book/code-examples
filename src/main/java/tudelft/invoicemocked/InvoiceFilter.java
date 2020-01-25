@@ -3,26 +3,20 @@ package tudelft.invoicemocked;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public class InvoiceFilter {
 
-    private InvoiceDao dao;
+    private IssuedInvoices issuedInvoices;
 
-    public InvoiceFilter (InvoiceDao dao) {
-        this.dao = dao;
+    public InvoiceFilter (IssuedInvoices issuedInvoices) {
+        this.issuedInvoices = issuedInvoices;
     }
 
-    public List<Invoice> filter() {
-
-        List<Invoice> allInvoices = dao.all();
-
-        List<Invoice> filtered = new ArrayList<>();
-
-        for(Invoice inv : allInvoices) {
-            if(inv.getValue() < 100.0)
-                filtered.add(inv);
-        }
-
-        return filtered;
+    public List<Invoice> lowValueInvoices() {
+        return issuedInvoices.all().stream()
+                .filter(invoice -> invoice.value < 100)
+                .collect(toList());
 
     }
 }
