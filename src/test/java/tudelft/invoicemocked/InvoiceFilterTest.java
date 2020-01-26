@@ -23,9 +23,9 @@ public class InvoiceFilterTest {
 
     @Test
     void filterInvoices() {
-        final Invoice mauricio = new Invoice("Mauricio", 20);
-        final Invoice fred = new Invoice("Fred", 99);
-        final Invoice arie = new Invoice("Arie", 300);
+        final var mauricio = new Invoice("Mauricio", 20);
+        final var fred = new Invoice("Fred", 99);
+        final var arie = new Invoice("Arie", 300);
 
         when(issuedInvoices.all()).thenReturn(asList(mauricio, arie, fred));
 

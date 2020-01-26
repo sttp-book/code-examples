@@ -13,25 +13,21 @@ public class RomanNumeralTestWithBeforeEach {
 
     @Test
     public void singleNumber() {
-        int result = roman.convert("I");
-        Assertions.assertEquals(1, result);
+        Assertions.assertEquals(1, roman.asArabic("I"));
     }
 
     @Test
     public void numberWithManyDigits() {
-        int result = roman.convert("VIII");
-        Assertions.assertEquals(8, result);
+        Assertions.assertEquals(8, roman.asArabic("VIII"));
     }
 
     @Test
     public void numberWithSubtractiveNotation() {
-        int result = roman.convert("IV");
-        Assertions.assertEquals(4, result);
+        Assertions.assertEquals(4, roman.asArabic("IV"));
     }
 
     @Test
     public void numberWithAndWithoutSubtractiveNotation() {
-        int result = roman.convert("XLIV");
-        Assertions.assertEquals(44, result);
+        Assertions.assertEquals(44, roman.asArabic("XLIV"));
     }
 }
