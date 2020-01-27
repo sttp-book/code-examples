@@ -8,7 +8,7 @@ public class RomanNumeral {
     public int asArabic(String roman) {
         final var digits = roman.chars().map(c -> CHAR_TO_DIGIT.get((char)c)).toArray();
 
-        int result = 0;
+        var result = 0;
         for(int i = 0; i < digits.length; i++) {
             final var currentNumber = digits[i];
             result += isSubtractive(digits, i, currentNumber) ? -currentNumber : currentNumber;
