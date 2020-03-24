@@ -1,28 +1,36 @@
 package tudelft.invoice;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class InvoiceFilterTest {
+    private IssuedInvoices invoices;
+
+    @BeforeEach public void open() {
+        invoices = new IssuedInvoices();
+    }
+
+    @AfterEach public void closeDao() {
+        if (invoices != null) invoices.close();
+    }
+
     @Test
     void filterInvoices() {
+        final var mauricio = new Invoice("Mauricio", 20);
+        final var fred = new Invoice("Fred", 99);
+        final var arie = new Invoice("Arie", 300);
 
-        InvoiceDao dao = new InvoiceDao();
-        Invoice mauricio = new Invoice("Mauricio", 20.0);
-        Invoice arie = new Invoice("Arie", 300.0);
+        invoices.save(mauricio);
+        invoices.save(fred);
+        invoices.save(arie);
 
-        dao.save(mauricio);
-        dao.save(arie);
+        final InvoiceFilter filter = new InvoiceFilter();
 
-        InvoiceFilter filter = new InvoiceFilter();
-        List<Invoice> result = filter.filter();
-
-        Assertions.assertEquals(mauricio, result.get(0));
-        Assertions.assertEquals(1, result.size());
-
-        dao.close();
+        assertThat(filter.lowValueInvoices()).containsExactlyInAnyOrder(mauricio, fred);
     }
 
 }

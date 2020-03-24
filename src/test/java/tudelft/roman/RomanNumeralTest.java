@@ -8,29 +8,29 @@ public class RomanNumeralTest {
 
     @Test
     public void singleNumber() {
-        RomanNumeral roman = new RomanNumeral();
-        int result = roman.convert("I");
+        var roman = new RomanNumeral();
+        var result = roman.asArabic("I");
         Assertions.assertEquals(1, result);
     }
 
     @Test
     public void numberWithManyDigits() {
-        RomanNumeral roman = new RomanNumeral();
-        int result = roman.convert("VIII");
+        var roman = new RomanNumeral();
+        var result = roman.asArabic("VIII");
         Assertions.assertEquals(8, result);
     }
 
     @Test
     public void numberWithSubtractiveNotation() {
-        RomanNumeral roman = new RomanNumeral();
-        int result = roman.convert("IV");
+        var roman = new RomanNumeral();
+        var result = roman.asArabic("IV");
         Assertions.assertEquals(4, result);
     }
 
     @Test
     public void numberWithAndWithoutSubtractiveNotation() {
-        RomanNumeral roman = new RomanNumeral();
-        int result = roman.convert("XLIV");
+        var roman = new RomanNumeral();
+        var result = roman.asArabic("XLIV");
         Assertions.assertEquals(44, result);
     }
 }

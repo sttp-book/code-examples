@@ -1,39 +1,33 @@
 package tudelft.roman;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RomanNumeralTestWithBeforeEach {
-
-    private RomanNumeral roman;
-
-    @BeforeEach
-    public void initialize() {
-        this.roman = new RomanNumeral();
-    }
+/*
+  JUnit creates a new instance of the class before each test,
+  so test setup can be assigned as instance fields.
+  This has the advantage that references can be made final
+ */
+    final private RomanNumeral roman = new RomanNumeral();
 
     @Test
     public void singleNumber() {
-        int result = roman.convert("I");
-        Assertions.assertEquals(1, result);
+        Assertions.assertEquals(1, roman.asArabic("I"));
     }
 
     @Test
     public void numberWithManyDigits() {
-        int result = roman.convert("VIII");
-        Assertions.assertEquals(8, result);
+        Assertions.assertEquals(8, roman.asArabic("VIII"));
     }
 
     @Test
     public void numberWithSubtractiveNotation() {
-        int result = roman.convert("IV");
-        Assertions.assertEquals(4, result);
+        Assertions.assertEquals(4, roman.asArabic("IV"));
     }
 
     @Test
     public void numberWithAndWithoutSubtractiveNotation() {
-        int result = roman.convert("XLIV");
-        Assertions.assertEquals(44, result);
+        Assertions.assertEquals(44, roman.asArabic("XLIV"));
     }
 }
