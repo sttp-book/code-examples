@@ -1,7 +1,5 @@
-package tudelft.invoicemocked;
+package tudelft.invoicestubbed;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IssuedInvoices {

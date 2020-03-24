@@ -1,4 +1,4 @@
-package tudelft.invoicemocked;
+package tudelft.invoicestubbed;
 
 import java.util.Objects;
 
