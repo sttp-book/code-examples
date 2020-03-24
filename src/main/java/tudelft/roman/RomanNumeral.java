@@ -1,37 +1,24 @@
 package tudelft.roman;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class RomanNumeral {
+    private final static Map<Character, Integer> CHAR_TO_DIGIT = Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
 
-    private static Map<Character, Integer> map;
+    public int asArabic(String roman) {
+        final var digits = roman.chars().map(c -> CHAR_TO_DIGIT.get((char)c)).toArray();
 
-    static {
-        map = new HashMap<Character, Integer>();
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
-    }
-
-    public int convert(String s) {
-
-        int convertedNumber = 0;
-        for(int i = 0; i < s.length(); i++) {
-            int currentNumber = map.get(s.charAt(i));
-            int next = i+1 < s.length() ? map.get(s.charAt(i+1)) : 0;
-
-            if(currentNumber >= next)
-                convertedNumber += currentNumber;
-            else
-                convertedNumber -= currentNumber;
+        var result = 0;
+        for(int i = 0; i < digits.length; i++) {
+            final var currentNumber = digits[i];
+            result += isSubtractive(digits, i, currentNumber) ? -currentNumber : currentNumber;
         }
 
-        return convertedNumber;
+        return result;
+    }
 
+    private static boolean isSubtractive(int[] digits, int i, int currentNumber) {
+        return i + 1 < digits.length
+            && currentNumber < digits[i + 1];
     }
 }

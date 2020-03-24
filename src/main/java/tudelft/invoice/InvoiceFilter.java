@@ -1,23 +1,20 @@
 package tudelft.invoice;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class InvoiceFilter {
 
-    public List<Invoice> filter() {
-
-        InvoiceDao invoiceDao = new InvoiceDao();
-        List<Invoice> allInvoices = invoiceDao.all();
-
-        List<Invoice> filtered = new ArrayList<>();
-
-        for(Invoice inv : allInvoices) {
-            if(inv.getValue() < 100.0)
-                filtered.add(inv);
+    public List<Invoice> lowValueInvoices() {
+        final var issuedInvoices = new IssuedInvoices();
+        try {
+            return issuedInvoices.all().stream()
+                    .filter(invoice -> invoice.value < 100)
+                    .collect(toList());
+        } finally {
+            issuedInvoices.close();
         }
-
-        return filtered;
-
     }
+
 }
