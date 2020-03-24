@@ -17,7 +17,7 @@ public class InvoiceFilter {
 	public List<Invoice> lowValueInvoices() {
 		return issuedInvoices.all().stream()
 				.filter(invoice -> invoice.value < 100)
-				.map(invoice -> { sap.send(invoice); return invoice;})
+				.peek(invoice -> sap.send(invoice))
 				.collect(toList());
 	}
 }
