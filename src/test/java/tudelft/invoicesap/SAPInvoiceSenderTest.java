@@ -16,7 +16,7 @@ public class SAPInvoiceSenderTest {
         final var steve = new Invoice("Steve", 99);
         final var arie = new Invoice("Arie", 300);
 
-        when(filter.lowValueInvoices()).thenReturn(asList(mauricio, steve));
+        when(filter.lowValueInvoices()).thenReturn(asList(mauricio, steve, arie));
 
         sender.sendLowValuedInvoices();
 
