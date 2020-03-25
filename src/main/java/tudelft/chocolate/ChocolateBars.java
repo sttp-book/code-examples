@@ -1,6 +1,6 @@
 package tudelft.chocolate;
 
-public class ChocolateBags {
+public class ChocolateBars {
 
     public static final int CANNOT_PACK_BAG = -1;
 
