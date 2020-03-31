@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RomanNumeralTest {
-
-
     @Test
     public void singleNumber() {
         var roman = new RomanNumeral();

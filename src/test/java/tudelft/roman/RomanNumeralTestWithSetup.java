@@ -3,12 +3,18 @@ package tudelft.roman;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class RomanNumeralTestWithBeforeEach {
-/*
-  JUnit creates a new instance of the class before each test,
-  so test setup can be assigned as instance fields.
-  This has the advantage that references can be made final
+/**
+ * Tests the RomanNumeral class.
+ * You can also use this test class to test the 
+ * RomanNumeralWithStream implementation.
+ *
  */
+public class RomanNumeralTestWithSetup {
+    /*
+      JUnit creates a new instance of the class before each test,
+      so test setup can be assigned as instance fields.
+      This has the advantage that references can be made final.
+     */
     final private RomanNumeral roman = new RomanNumeral();
 
     @Test
