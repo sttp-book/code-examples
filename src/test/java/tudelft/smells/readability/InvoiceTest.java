@@ -17,7 +17,7 @@ public class InvoiceTest {
 
 		var v = invoice.calculate();
 
-		assertEquals(2500, v.doubleValue(), 0.0001);
+		assertEquals(250, v.doubleValue(), 0.0001);
 
 	}
 
