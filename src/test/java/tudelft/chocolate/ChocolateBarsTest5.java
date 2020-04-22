@@ -29,7 +29,10 @@ public class ChocolateBarsTest5 {
             Arguments.of(4,0,5,-1),
             // only big bars -> not enough bars
             Arguments.of(4,2,10,0),
-            Arguments.of(4,1,10,-1)
+            Arguments.of(4,1,10,-1),
+            // only big bars, not all -> only big bars, all
+            Arguments.of(4,3,10,-1),
+            Arguments.of(6,0,5,5)
         );
 
     }
