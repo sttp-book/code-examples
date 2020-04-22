@@ -17,7 +17,7 @@ public class ChocolateBarsTest3 {
             // Only small bars.
             "'small-bars-only',4,2,3,3", "'small-bars-only',3,2,3,3", "'small-bars-only',2,2,3,-1", "'small-bars-only',1,2,3,-1"
     })
-    public void testAlgorithm(int small, int big, int total, int expectedResult) {
+    void boundaries(int small, int big, int total, int expectedResult) {
         int result = new ChocolateBars().calculate(small, big, total);
         Assertions.assertEquals(expectedResult, result);
     }
