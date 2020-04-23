@@ -18,21 +18,23 @@ public class ChocolateBarsTest5 {
 
     private static Stream<Arguments> generator() {
         return Stream.of(
-            // small and big bars -> only big bars
-            Arguments.of(10,1,10,5),
-            Arguments.of(10,2,10,0),
-            // small and big bars -> only small bars
-            Arguments.of(10,1,10,5),
-            Arguments.of(10,0,10,10),
-            // only small bars, total >=5 -> not enough bars
-            Arguments.of(5,0,5,5),
-            Arguments.of(4,0,5,-1),
-            // only big bars -> not enough bars
-            Arguments.of(4,2,10,0),
-            Arguments.of(4,1,10,-1),
-            // only big bars, not all -> only big bars, all
-            Arguments.of(4,3,10,-1),
-            Arguments.of(6,0,5,5)
+                // small and big bars -> only big bars
+                Arguments.of(10,1,10,5),
+                Arguments.of(10,2,10,0),
+                // small and big bars -> only small bars
+                Arguments.of(10,1,10,5),
+                Arguments.of(10,0,10,10),
+                // only small bars -> not enough bars
+                Arguments.of(5,0,5,5),
+                Arguments.of(4,0,5,-1),
+                // only big bars -> not enough bars
+                Arguments.of(4,2,10,0),
+                Arguments.of(4,1,10,-1),
+                // small and big bars -> not enough bars
+                Arguments.of(3,1,8,3),
+                Arguments.of(2,1,8,-1),
+                Arguments.of(3,1,8,3),
+                Arguments.of(3,0,8,-1)
         );
 
     }
