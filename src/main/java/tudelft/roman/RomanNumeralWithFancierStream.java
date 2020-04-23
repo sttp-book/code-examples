@@ -7,6 +7,7 @@ public class RomanNumeralWithFancierStream implements RomanConverter {
     private final static Map<Character, Integer> CHAR_TO_DIGIT =
             Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
 
+    @Override
     public int asArabic(String roman) {
         var chars = roman.toCharArray();
         return IntStream.range(0, chars.length)
