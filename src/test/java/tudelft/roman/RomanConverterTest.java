@@ -20,7 +20,7 @@ class RomanConverterTest {
 
     @ParameterizedTest
     @MethodSource("equalsGenerator")
-    void romanNumeralWithFancyStreamAsArabic(RomanConverter converter, int expected, String roman) {
+    void asArabic(RomanConverter converter, int expected, String roman) {
         assertEquals(expected, converter.asArabic(roman));
     }
 
