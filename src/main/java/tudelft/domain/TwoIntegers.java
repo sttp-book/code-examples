@@ -1,6 +1,6 @@
 package tudelft.domain;
 
-public class TwoInteger {
+public class TwoIntegers {
 
   public int sum(int n, int m) {
     assert n >= 1 && n <= 99;
