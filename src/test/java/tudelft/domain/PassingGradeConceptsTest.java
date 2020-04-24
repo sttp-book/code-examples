@@ -2,15 +2,14 @@ package tudelft.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import tudelft.domain.PassingGradeConcept;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test suite for calculating grades (the PassingGradeConcept class)
+ * Test suite for calculating grades (the PassingGradeConcepts class)
  */
-class PassingGradeConceptTest {
-    PassingGradeConcept passingGradeConcept = new PassingGradeConcept();
+class PassingGradeConceptsTest {
+    PassingGradeConcepts passingGradeConcepts = new PassingGradeConcepts();
 
     /**
      * Parameterized test that tests lower & upper
@@ -38,8 +37,8 @@ class PassingGradeConceptTest {
             "9.0f, A",  // Upper boundary (B), lower boundary (A)
             "10.0f, A"  // Upper boundary (A)
     })
-    public void testGradeBoundaryTests(float grade, PassingGradeConcept.Concept concept) {
-        PassingGradeConcept.Concept result = passingGradeConcept.calculateGrade(grade);
+    public void testGradeBoundaryTests(float grade, PassingGradeConcepts.Concept concept) {
+        PassingGradeConcepts.Concept result = passingGradeConcepts.calculateGrade(grade);
         assertEquals(concept, result, "Expected " + concept + " for grade " + grade);
     }
 }
