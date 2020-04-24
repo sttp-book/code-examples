@@ -24,7 +24,8 @@ The grade is used to decide the concept.
 ## Equivalence Partitioning/Boundary Analysis
 | Variable | Equivalence classes | Invalid classes | Boundaries |
 | -------- | ------------------- | --------------- | ---------- |
-| Grade | [1,5[ | | 1 |
+| Grade | [1,5[ | | |
+| | | | 1 |
 | | | | 5 |
 | | | | 4.9 |
 | | [5,6[ | | |
