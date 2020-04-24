@@ -1,7 +1,8 @@
-package tudelft.passinggrade;
+package tudelft.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import tudelft.domain.PassingGradeConcept;
 
 import static org.junit.jupiter.api.Assertions.*;
 

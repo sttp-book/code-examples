@@ -1,4 +1,4 @@
-package tudelft.passinggrade;
+package tudelft.domain;
 
 public class PassingGradeConcept {
     enum Concept {
