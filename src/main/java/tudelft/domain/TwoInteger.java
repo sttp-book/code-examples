@@ -1,4 +1,4 @@
-package tudelft.twointeger1;
+package tudelft.domain;
 
 public class TwoInteger {
 
