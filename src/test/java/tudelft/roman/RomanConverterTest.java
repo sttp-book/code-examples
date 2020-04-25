@@ -24,29 +24,61 @@ class RomanConverterTest {
         assertEquals(expected, converter.asArabic(roman));
     }
 
+    /**
+     * This method will convert the values in the "map-like" (key/value) list
+     * to a Stream of arguments for each implementation of the RomanConverter interface.
+     *
+     * The different classes which we can derive from the context of the `asArabic()` method are:
+     *      1. Size of input: Single/Multiple characters
+     *      2. Special values: Negative/Blank/Null
+     *      3. Subtractive input for single/multiple characters
+     *
+     * Now we know that there are no special roman numeral for negative numbers,
+     * nor does the algorithm handle null values well - so we can skip those as they are
+     * not in the specification of the program.
+     *
+     * So we will test the following cases:
+     *      1. Single character
+     *      2. Special value 'Blank'
+     *      3. Multiple characters not subtractive
+     *      4. Multiple characters with subtractive input
+     *      5. Multiple characters with mixed subtractive input
+     *
+     * Arguably we could only test each class once, but since its so easy to add new test cases
+     * we might as well test a few possibilities out there :)
+     */
     private static Stream<Arguments> equalsGenerator() {
         return implWith(Arrays.asList(
-                0, "",
+                // Test single characters
                 1, "I",
+                5, "V",
+                10, "X",
+                50, "L",
+                100, "C",
+                500, "D",
+                1000, "M",
+
+                // Special cases
+                0, "",
+
+                // Multiple values not subtractive
                 2, "II",
                 3, "III",
-                4, "IV",
-                5, "V",
                 6, "VI",
                 7, "VII",
                 8, "VIII",
-                9, "IX",
-                10, "X",
-                40, "XL",
-                50, "L",
                 60, "LX",
                 80, "LXXX",
+
+                // Multiple values subtractive
+                4, "IV",
+                9, "IX",
+                40, "XL",
+
+                // Mixed subtractive/non subtractive input
                 97, "XCVII",
-                100, "C",
                 1678, "MDCLXXVIII",
-                500, "D",
                 999, "CMXCIX",
-                1000, "M",
                 3888, "MMMDCCCLXXXVIII"
         ));
     }
