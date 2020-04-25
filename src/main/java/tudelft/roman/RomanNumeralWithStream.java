@@ -3,10 +3,11 @@ package tudelft.roman;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class RomanNumeralWithStream {
+public class RomanNumeralWithStream implements RomanConverter {
     private final static Map<Character, Integer> RomanToArabic = 
             Map.of('I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
 
+    @Override
     public int asArabic(String roman) {
         // Create a new array with every roman numeral converted to the corresponding number,
         // with a zero (0) appended at the end.
