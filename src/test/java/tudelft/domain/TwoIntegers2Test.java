@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class TwoIntegers2Test {
 
+  private final TwoIntegers2 adder = new TwoIntegers2();
+  
   // invalid input cases
   @ParameterizedTest(name = "num1={0}, num2={1}")
   @CsvSource({
@@ -20,7 +22,6 @@ class TwoIntegers2Test {
           "83, 83"    /* T15, sum=166 is the off-point: sum <= 165 , x and y are valid */
   })
   void sumInvalidCases(int num1, int num2) {
-    TwoIntegers2 adder = new TwoIntegers2();
     Assertions.assertThrows(AssertionError.class, () -> adder.sum(num1, num2));
   }
 
@@ -36,7 +37,6 @@ class TwoIntegers2Test {
           "82, 83, 165"   /* T16, sum=165 is the on-point: sum<=165 , x and y are valid */
   })
   void sumValidCases(int num1, int num2, int result) {
-    TwoIntegers2 adder = new TwoIntegers2();
     Assertions.assertEquals(result, adder.sum(num1, num2));
   }
 }
