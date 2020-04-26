@@ -1,6 +1,5 @@
 package tudelft.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,8 +8,6 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MScAdmissionTest {
 
@@ -21,13 +18,17 @@ public class MScAdmissionTest {
     void validInputs(int act, double gpa, boolean expectedResult) {
         boolean admit = admission.admit(act, gpa);
 
-        assertEquals(expectedResult, admit);
+        assertThat(admit).isEqualTo(expectedResult);
     }
 
     @ParameterizedTest
     @MethodSource("invalidInputs")
     void invalidInputs(int act, double gpa) {
-        assertThrows(AssertionError.class, () -> admission.admit(act, gpa));
+        assertThatThrownBy(() -> {
+            admission.admit(act, gpa);
+        })
+        .isInstanceOf(AssertionError.class)
+        .hasMessageContaining("has to be between");
     }
 
     private static Stream<Arguments> validInputs() {
