@@ -8,15 +8,13 @@
     <artifactId>sttp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
-
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.14.0</version>
+            <version>3.15.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -25,13 +23,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.1.0-RC1</version>
+            <version>5.6.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.1.0-RC1</version>
+            <version>5.6.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -42,7 +40,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>3.2.0</version>
+            <version>3.3.3</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
@@ -51,6 +49,7 @@
             <artifactId>hsqldb</artifactId>
             <version>2.5.0</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -77,40 +76,55 @@
             </plugin>
 
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>2.22.2</version>
                 <configuration>
+                    <enableAssertions>true</enableAssertions>
                     <includes>
-                        <include>**/Test*.java</include>
                         <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
-                        <include>**/*TestCase.java</include>
+                        <include>%regex[.*Test(\d?).*]</include>
                     </includes>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>1.1.0-RC1</version>
-                    </dependency>
-                </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>10</source>
-                    <target>10</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.5.1</version>
+                <!-- https://mvnrepository.com/artifact/org.pitest/pitest-junit5-plugin -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>0.12</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <jvmArgs>
+                        <arg>-ea</arg>
+                    </jvmArgs>
+                    <verbose>false</verbose>
+                    <targetClasses>
+                        <param>tudelft.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>tudelft.*</param>
+                    </targetTests>
+                    <excludedTestClasses>
+                        <excludedTestClass>tudelft.invoice.InvoiceFilterTest</excludedTestClass>
+                    </excludedTestClasses>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
