@@ -3,6 +3,7 @@ package tudelft.dbc.roman;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import tudelft.intro.RomanNumeral;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RomanConverterTest {
 
     private final static List<RomanConverter> CONVERTERS = Arrays.asList(
-            new RomanNumeral(),
+            new RomanNumeralNoStream(),
             new RomanNumeralWithStream(),
             new RomanNumeralWithFancierStream()
     );
