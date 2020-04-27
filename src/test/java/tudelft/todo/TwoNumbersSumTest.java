@@ -1,4 +1,4 @@
-package tudelft.sum;
+package tudelft.todo;
 
 public class TwoNumbersSumTest {
 

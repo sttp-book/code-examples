@@ -1,4 +1,4 @@
-package tudelft.ghappy;
+package tudelft.todo;
 
 public class GHappyTest {
 }
