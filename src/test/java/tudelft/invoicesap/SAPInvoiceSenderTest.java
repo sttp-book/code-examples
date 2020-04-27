@@ -6,15 +6,15 @@ import static org.mockito.Mockito.*;
 
 public class SAPInvoiceSenderTest {
 
-	private static final InvoiceFilter filter = mock(InvoiceFilter.class);
-    private static final SAP sap = mock(SAP.class);
-	private static final SAPInvoiceSender sender = new SAPInvoiceSender(filter, sap);
+	private final InvoiceFilter filter = mock(InvoiceFilter.class);
+    private final SAP sap = mock(SAP.class);
+	private final SAPInvoiceSender sender = new SAPInvoiceSender(filter, sap);
 
     @Test
     void sendToSap() {
-        final var mauricio = new Invoice("Mauricio", 20);
-        final var steve = new Invoice("Steve", 99);
-        final var arie = new Invoice("Arie", 300);
+        final Invoice mauricio = new Invoice("Mauricio", 20);
+        final Invoice steve = new Invoice("Steve", 99);
+        final Invoice arie = new Invoice("Arie", 300);
 
         when(filter.lowValueInvoices()).thenReturn(asList(mauricio, steve, arie));
 
