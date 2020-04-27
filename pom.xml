@@ -73,6 +73,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>**/todo/*</exclude>
+                        <exclude>**/smells/*</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -120,8 +126,14 @@
                         <param>tudelft.*</param>
                     </targetTests>
                     <excludedTestClasses>
-                        <excludedTestClass>tudelft.invoice.InvoiceFilterTest</excludedTestClass>
+                        <excludedTestClass>tudelft.mocks.invoice.BadlyDesignedInvoiceFilterTest</excludedTestClass>
+                        <excludedTestClass>tudelft.todo.*</excludedTestClass>
+                        <excludedTestClass>tudelft.smells.*</excludedTestClass>
                     </excludedTestClasses>
+                    <excludedClasses>
+                        <excludedTestClass>tudelft.todo.*</excludedTestClass>
+                        <excludedTestClass>tudelft.smells.*</excludedTestClass>
+                    </excludedClasses>
                 </configuration>
             </plugin>
 
