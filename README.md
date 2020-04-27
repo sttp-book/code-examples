@@ -6,6 +6,18 @@
 This repository contains the code examples and exercises of
 our *Software Testing: From Theory to Practice* book.
 
+Packages are related to the chapters of the book:
+
+* `tudelft.intro`: introduction to JUnit
+* `tudelft.domain`: specification-based testing, boundary testing, domain testing.
+* `tudelft.structural`: structural testing
+* `tudelft.model`: model-based testing
+* `tudelft.dbc`: design-by-contracts
+* `tudelft.pbt`: property-based testing
+* `tudelft.mocks`: mock objects
+* `tudelft.testability`: Design for testability
+* `tudelft.smell`: Test code quality
+* `tudelft.todo`: Exercises that we still want to add somewhere in the book.
 
 ## License
 
