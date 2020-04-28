@@ -18,16 +18,16 @@ class ATMTest {
 
     private static Stream<Arguments> validGenerator() {
         return Stream.of(
-                Arguments.of(20),
-                Arguments.of(40),
-                Arguments.of(60),
-                Arguments.of(80),
-                Arguments.of(100),
-                Arguments.of(120),
-                Arguments.of(140),
-                Arguments.of(160),
-                Arguments.of(180),
-                Arguments.of(200)
+                /* T01 */ Arguments.of(20),
+                /* T02 */ Arguments.of(40),
+                /* T03 */ Arguments.of(60),
+                /* T04 */ Arguments.of(80),
+                /* T05 */ Arguments.of(100),
+                /* T06 */ Arguments.of(120),
+                /* T07 */ Arguments.of(140),
+                /* T08 */ Arguments.of(160),
+                /* T09 */ Arguments.of(180),
+                /* T10 */ Arguments.of(200)
         );
     }
 
@@ -39,8 +39,8 @@ class ATMTest {
 
     private static Stream<Arguments> invalidGenerator() {
         return Stream.of(
-                Arguments.of(41),
-                Arguments.of(61)
+                /* T12 */ Arguments.of(41),
+                /* T13 */ Arguments.of(61)
         );
     }
 
@@ -52,8 +52,8 @@ class ATMTest {
 
     private static Stream<Arguments> illegalArgGenerator() {
         return Stream.of(
-                Arguments.of(19),
-                Arguments.of(-1)
+                /* T11 */ Arguments.of(19),
+                /* T14 */ Arguments.of(-1)
         );
     }
 
