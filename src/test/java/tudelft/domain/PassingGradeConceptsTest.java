@@ -3,6 +3,7 @@ package tudelft.domain;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -37,8 +38,24 @@ class PassingGradeConceptsTest {
             "9.0f, A",  // Upper boundary (B), lower boundary (A)
             "10.0f, A"  // Upper boundary (A)
     })
-    public void testGradeBoundaryTests(float grade, PassingGradeConcepts.Concept concept) {
+    void testGradeBoundaryTests(float grade, PassingGradeConcepts.Concept concept) {
         PassingGradeConcepts.Concept result = passingGradeConcepts.calculateGrade(grade);
         assertEquals(concept, result, "Expected " + concept + " for grade " + grade);
+    }
+
+    /**
+     * Parameterized test for invalid grades.
+     * The class should throw an IllegalArgumentException in such cases.
+     *
+     * @param invalidGrade The invalid invalidGrade
+     */
+    @ParameterizedTest
+    @CsvSource({
+            "0.9f",  // invalidGrade < 1
+            "10.1f",  // invalidGrade > 10
+    })
+    void invalidGrades(float invalidGrade) {
+     assertThatThrownBy(() -> passingGradeConcepts.calculateGrade(invalidGrade))
+             .isInstanceOf(IllegalArgumentException.class);
     }
 }
