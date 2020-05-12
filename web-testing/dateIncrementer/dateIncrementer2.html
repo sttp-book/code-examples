@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Date incrementer - version 2</title>
+</head>
+
+<body>
+    <p id="pDate">Date will appear here.</p>
+    <button id="btnIncrement">+1</button>
+
+    <script src="dateUtils.js"></script>
+    <script src="dateIncrementer.js"></script>
+    <script>
+        window.onload = function () {
+            var incrementer = new DateIncrementer(
+                new Date(), document.getElementById("pDate"));
+
+            var btn = document.getElementById("btnIncrement");
+            btn.onclick = function () { incrementer.increment(); };
+
+            incrementer.updateView();
+        }
+    </script>
+</body>
+
+</html>

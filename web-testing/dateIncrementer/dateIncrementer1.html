@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Date incrementer - version 1</title>
+</head>
+
+<body>
+    <p>Date will appear here.</p>
+    <button onclick="incrementDate(this)">+1</button>
+
+    <script>
+        function incrementDate(sender) {
+            var p = sender.parentNode.children[0];
+            var date = new Date(p.innerText);
+            date.setDate(date.getDate() + 1);
+            p.innerText = date.toISOString().slice(0, 10);
+            console.log('The new date is ' + date);
+        }
+
+        window.onload = function () {
+            var p = document.getElementsByTagName("p")[0];
+            p.innerText = new Date().toISOString().slice(0, 10);
+        }
+    </script>
+</body>
+
+</html>

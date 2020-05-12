@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Date utils - Test</title>
+</head>
+
+<body>
+    <p>View the console output for test results.</p>
+
+    <script src="dateUtils.js"></script>
+    <script>
+        function assertEqual(expected, actual) {
+            if (expected != actual) {
+                console.log("Expected " + expected + " but was " + actual);
+            }
+        }
+
+        // Test 1: incrementDate should add 1 day a given date object
+        var date1 = new Date(2020, 1, 29);  // February 29th, 2020
+        incrementDate(date1);
+        // This succeeds:
+        assertEqual(new Date(2020, 2, 1).getTime(), date1.getTime());
+
+        // Test 2: dateToString should return the date in the form "yyyy-MM-dd"
+        var date2 = new Date(2020, 4, 1);   // May 1st, 2020
+        // This fails because of time zone issues 
+        // (the actual value is "2020-04-30"):
+        assertEqual("2020-05-01", dateToString(date2));
+    </script>
+</body>
+
+</html>

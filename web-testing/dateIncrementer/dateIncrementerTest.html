@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Date incrementer - Test</title>
+</head>
+
+<body>
+    <p>View the console output for test results.</p>
+    <p id="pDate" style="display: none">Dummy element for UI test.</p>
+
+    <script src="dateIncrementer.js"></script>
+    <script>
+        function assertEqual(expected, actual) {
+            if (expected != actual) {
+                console.log("Expected " + expected + " but was " + actual);
+            }
+        }
+
+        // Mocks
+        var incrementDateCalls = 0;
+        var dateToStringCalls = 0;
+
+        function incrementDate(date) {
+            incrementDateCalls++;
+            date.setDate(1);
+        }
+
+        function dateToString(date) {
+            dateToStringCalls++;
+            return "mock";
+        }
+
+        // Test 3: DateIncrementer
+        var date3 = new Date(2020, 2, 14);  // March 14th, 2020
+        var p = document.getElementById("pDate");
+
+        var dateIncrementer = new DateIncrementer(date3, p);
+
+        // As we are not using a mocking library,
+        // we mock console.log() by "monkey patching" it.
+        var consoleLogCalls = 0;
+        var originalConsoleLog = console.log;
+        console.log = function(msg) { consoleLogCalls++; };
+
+        // Call the 'function under test'.
+        dateIncrementer.increment();
+
+        // Restore console.log to the original function.
+        console.log = originalConsoleLog;
+
+        // 3.1: increment() should call incrementDate()
+        assertEqual(1, incrementDateCalls);
+
+        // 3.2: increment() should not mutate the original date
+        assertEqual(14, date3.getDate());
+        assertEqual(2, date3.getMonth());
+        assertEqual(2020, date3.getFullYear());
+
+        // 3.3: increment() should use dateToString and update the view
+        assertEqual(1, dateToStringCalls);
+        assertEqual("mock", p.innerText);
+
+        // 3.4: increment() should log to the console
+        assertEqual(1, consoleLogCalls);
+    </script>
+</body>
+
+</html>
