@@ -12,12 +12,12 @@ public class PassingGradesPBTest {
     private final PassingGrade pg = new PassingGrade();
 
     @Property
-    void pass(@ForAll @FloatRange(min = 1f, max = 5.0f, maxIncluded = false) float grade) {
+    void fail(@ForAll @FloatRange(min = 1f, max = 5.0f, maxIncluded = false) float grade) {
         assertThat(pg.passed(grade)).isFalse();
     }
 
     @Property
-    void fail(@ForAll @FloatRange(min = 5.0f, max = 10.0f, maxIncluded = false) float grade) {
+    void pass(@ForAll @FloatRange(min = 5.0f, max = 10.0f, maxIncluded = false) float grade) {
         assertThat(pg.passed(grade)).isTrue();
     }
 
