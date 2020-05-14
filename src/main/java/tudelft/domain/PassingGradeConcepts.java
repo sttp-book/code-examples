@@ -1,7 +1,7 @@
 package tudelft.domain;
 
 public class PassingGradeConcepts {
-    enum Concept {
+    public enum Concept {
         A,
         B,
         C,
