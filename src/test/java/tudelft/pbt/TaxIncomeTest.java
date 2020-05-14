@@ -2,6 +2,7 @@ package tudelft.pbt;
 
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.DoubleRange;
+import net.jqwik.api.constraints.Negative;
 import tudelft.domain.TaxIncome;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,14 +37,8 @@ class TaxIncomeTest {
     }
 
     @Property
-    void invalid(@ForAll("negative") double income){
+    void invalid(@ForAll @Negative double income){
         assertEquals(taxIncome.calculate(income), -1, Math.ulp(income));
-    }
-
-    @Provide
-    private Arbitrary<Double> negative(){
-        return Arbitraries.oneOf(
-                Arbitraries.doubles().lessThan(0));
     }
 
 }
