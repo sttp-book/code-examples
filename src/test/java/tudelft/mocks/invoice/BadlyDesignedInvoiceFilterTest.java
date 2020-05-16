@@ -7,14 +7,16 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BadlyDesignedInvoiceFilterTest {
+    private DatabaseConnection connection;
     private InvoiceDao invoices;
 
     @BeforeEach public void open() {
-        invoices = new InvoiceDao();
+        connection = new DatabaseConnection();
+        invoices = new InvoiceDao(connection);
     }
 
     @AfterEach public void closeDao() {
-        if (invoices != null) invoices.close();
+        connection.close();
     }
 
     @Test
