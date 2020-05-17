@@ -22,6 +22,10 @@ public class InvoiceDaoIntegrationTest {
         /**
          * Let's clean up the table before the test runs.
          * That will avoid possible flaky tests.
+         *
+         * Note that doing a single 'truncate' here seems simple and enough for this exercise.
+         * In large systems, you will probably want to encapsulate the 'reset database' logic
+         * somewhere else. Or even make use of specific frameworks for that.
          */
         connection.getConnection().prepareStatement("truncate table invoice").execute();
 
