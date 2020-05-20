@@ -1,0 +1,1 @@
+java -Xmx3000m -classpath target/classes:randoop-all-4.2.3.jar randoop.main.Main gentests --testclass=tudelft.sbst.Triangle --output-limit=100 --junit-output-dir=src/test/java/ --junit-package-name=tudelft.sbst

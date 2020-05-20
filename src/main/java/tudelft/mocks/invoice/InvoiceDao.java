@@ -5,24 +5,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InvoiceDao implements IssuedInvoices {
-    private static Connection connection = null;
 
-    public InvoiceDao() {
-        if(connection !=null) return;
+    private DatabaseConnection connection;
 
-        withSql(() -> {
-            connection = DriverManager.getConnection("jdbc:hsqldb:mem:mymemdb.db", "SA", "");
-            try (var preparedStatement = connection.prepareStatement("create table invoice (name varchar(100), value double)")) {
-                preparedStatement.execute();
-                connection.commit();
-            }
-            return null;
-        });
+    public InvoiceDao(DatabaseConnection connection) {
+        this.connection = connection;
     }
 
     public List<Invoice> all() {
-        return withSql( () -> {
-            try (var ps = connection.prepareStatement("select * from invoice")) {
+        return connection.withSql( () -> {
+            try (var ps = connection.getConnection().prepareStatement("select * from invoice")) {
+                final var rs = ps.executeQuery();
+
+                List<Invoice> allInvoices = new ArrayList<>();
+                while (rs.next()) {
+                    allInvoices.add(new Invoice(rs.getString("name"), rs.getInt("value")));
+                }
+                return allInvoices;
+            }
+        });
+    }
+
+    public List<Invoice> allWithAtLeast(int value) {
+        return connection.withSql( () -> {
+            try (var ps = connection.getConnection().prepareStatement("select * from invoice where value >= ?")) {
+                ps.setInt(1, value);
                 final var rs = ps.executeQuery();
 
                 List<Invoice> allInvoices = new ArrayList<>();
@@ -35,36 +42,18 @@ public class InvoiceDao implements IssuedInvoices {
     }
 
     public void save(Invoice inv) {
-        withSql( () -> {
-            try (var ps = connection.prepareStatement("insert into invoice (name, value) values (?,?)")) {
+        connection.withSql( () -> {
+            try (var ps = connection.getConnection().prepareStatement("insert into invoice (name, value) values (?,?)")) {
                 ps.setString(1, inv.customer);
                 ps.setInt(2, inv.value);
                 ps.execute();
 
-                connection.commit();
+                connection.getConnection().commit();
             }
             return null;
         });
     }
 
-    public void close() {
-        withSql( () -> {
-            if (connection != null) {
-                connection.close();
-            }
-            return null;
-        });
-        connection = null;
-    }
 
-    private static interface SqlSupplier<T> {
-        T doSql() throws SQLException;
-    }
-    private static <T> T withSql(SqlSupplier<T> sqlSupplier) {
-        try {
-            return sqlSupplier.doSql();
-        } catch (SQLException e) {
-            throw new EnvironmentFailure(e);
-        }
-    }
+
 }
