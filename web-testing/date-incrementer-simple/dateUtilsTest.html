@@ -17,7 +17,7 @@
             }
         }
 
-        // Test 1: incrementDate should add 1 day a given date object
+        // Test 1: incrementDate should handle February 29th
         var date1 = new Date(2020, 1, 29);  // February 29th, 2020
         incrementDate(date1);
         // This succeeds:
@@ -25,8 +25,8 @@
 
         // Test 2: dateToString should return the date in the form "yyyy-MM-dd"
         var date2 = new Date(2020, 4, 1);   // May 1st, 2020
-        // This fails because of time zone issues 
-        // (the actual value is "2020-04-30"):
+        // This fails when using toISOString() because of time zone issues 
+        // (the actual value is "2020-04-30" then):
         assertEqual("2020-05-01", dateToString(date2));
     </script>
 </body>

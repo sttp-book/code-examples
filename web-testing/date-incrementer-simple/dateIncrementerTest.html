@@ -37,18 +37,7 @@
         var p = document.getElementById("pDate");
 
         var dateIncrementer = new DateIncrementer(date3, p);
-
-        // As we are not using a mocking library,
-        // we mock console.log() by "monkey patching" it.
-        var consoleLogCalls = 0;
-        var originalConsoleLog = console.log;
-        console.log = function(msg) { consoleLogCalls++; };
-
-        // Call the 'function under test'.
         dateIncrementer.increment();
-
-        // Restore console.log to the original function.
-        console.log = originalConsoleLog;
 
         // 3.1: increment() should call incrementDate()
         assertEqual(1, incrementDateCalls);
@@ -61,9 +50,6 @@
         // 3.3: increment() should use dateToString and update the view
         assertEqual(1, dateToStringCalls);
         assertEqual("mock", p.innerText);
-
-        // 3.4: increment() should log to the console
-        assertEqual(1, consoleLogCalls);
     </script>
 </body>
 

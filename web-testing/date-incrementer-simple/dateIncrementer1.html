@@ -18,7 +18,6 @@
             var date = new Date(p.innerText);
             date.setDate(date.getDate() + 1);
             p.innerText = date.toISOString().slice(0, 10);
-            console.log('The new date is ' + date);
         }
 
         window.onload = function () {
