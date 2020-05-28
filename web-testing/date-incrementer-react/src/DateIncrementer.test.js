@@ -18,3 +18,8 @@ test('updates correctly when clicking the "+1" button', () => {
   const dateElement = getByText("2020-01-02");
   expect(dateElement).toBeInTheDocument();
 });
+
+test('renders correctly via snapshot', () => {
+  const { container } = render(<DateIncrementer initialDate={new Date(2020, 0, 1)} />);
+  expect(container).toMatchSnapshot();
+});

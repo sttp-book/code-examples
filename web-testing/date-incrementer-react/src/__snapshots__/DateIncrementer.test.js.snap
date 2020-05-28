@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly via snapshot 1`] = `
+<div>
+  <div>
+    <p>
+      2020-01-01
+    </p>
+    <button>
+      +1
+    </button>
+  </div>
+</div>
+`;
