@@ -17,6 +17,12 @@
             }
         }
 
+        /*
+        Be aware that in JavaScript Date objects, months are zero-based,
+        meaning that month 0 is January, month 1 is February, etc.
+        So "new Date(2020, 1, 29)" represents February 29th, 2020.
+        */
+
         // Test 1: incrementDate should handle February 29th
         var date1 = new Date(2020, 1, 29);  // February 29th, 2020
         incrementDate(date1);
