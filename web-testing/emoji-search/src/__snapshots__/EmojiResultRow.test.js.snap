@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the EmojiResultRow component should render the component via snapshot 1`] = `
+<div>
+  <div
+    class="component-emoji-result-row copy-to-clipboard"
+    data-clipboard-text="☺"
+  >
+    <img
+      alt="smile"
+      src="/emoji-32/263a.png"
+    />
+    <span
+      class="title"
+    >
+      smile
+    </span>
+    <span
+      class="info"
+    >
+      Click to copy emoji
+    </span>
+  </div>
+</div>
+`;
